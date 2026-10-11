@@ -1,5 +1,8 @@
-\documentclass[11pt]{article}
+% !TEX TS-program = xelatex
+% !TEX encoding = UTF-8 Unicode
+% !Mode:: "TeX:UTF-8"
 
+\documentclass[11pt]{article}
 
 \setlength{\parindent}{0pt}
 \usepackage{xltxtra}
@@ -16,140 +19,121 @@
 \usepackage{fontspec}
 \usepackage{xeCJK}
 \usepackage{enumitem}
-\CJKsetecglue{} %% 取消中文与数字之间的间隙
-
+\CJKsetecglue{}
 
 %% 主文档字体设置
 \setmainfont[
-    Path = fonts/Main/,
-    Extension = .otf,
-    BoldFont = texgyretermes-bold.otf, % 加粗字体
-]{texgyretermes-regular.otf} % 正文字体
+    BoldFont = NotoSerif-Bold.ttf,
+]{NotoSerif-Regular.ttf}
 
 % 中文字体设置
 \setCJKmainfont[
-    Path = fonts/hansans/,
-    Extension = .ttf,
-    BoldFont = NotoSansSC-Bold.ttf, % 加粗字体
-]{NotoSansSC-Regular.otf} % 正文字体
-
+    BoldFont = NotoSansSC-Bold.ttf,
+]{NotoSansSC-Regular.ttf}
 
 \usepackage{relsize}
 \usepackage{xspace}
 
-% 使用 fontawesome（部分图标）
-\usepackage{fontawesome} 
-
 % A4纸，上下左右边距
 \usepackage[
     a4paper,
-    left=1.2cm,
-    right=1.2cm,
-    top=1.5cm,
-    bottom=1cm,
+    left=0.95cm,
+    right=0.95cm,
+    top=1.3cm,
+    bottom=0.7cm,
     nohead
 ]{geometry}
 
-\renewcommand{\baselinestretch}{1.5} % 行间距设为1.5
+\renewcommand{\baselinestretch}{1.25}
 
 \usepackage{titlesec}
-\usepackage{enumitem}
-\setlist{noitemsep} % 取消列表项间的额外间距
-%\setlist{nosep} % 取消所有垂直间距
+\setlist{noitemsep}
 \setlist[itemize]{topsep=0.25em, leftmargin=*}
 \setlist[enumerate]{topsep=0.25em, leftmargin=*}
 
 % --- 用于控制【不同项目之间】的垂直距离 ---
 \newlength{\interProjectSpacing}
-\setlength{\interProjectSpacing}{0.9em} % <--- 在此调整项目之间的距离
+\setlength{\interProjectSpacing}{0.9em}
 \newcommand{\projectsep}{\vspace{\interProjectSpacing}}
 
 % --- 用于控制【项目标题】与下方【项目描述】的距离 ---
 \newlength{\intraProjectTitleSep}
-\setlength{\intraProjectTitleSep}{0.4em} % <--- 在此调整标题和描述的距离
+\setlength{\intraProjectTitleSep}{0.4em}
 \newcommand{\titlebreak}{\\[\intraProjectTitleSep]}
 
 % --- 用于控制【项目描述】与下方【要点列表】的距离 ---
 \newlength{\intraProjectListTopSep}
-\setlength{\intraProjectListTopSep}{0.2em} % <--- 在此调整描述和列表的距离
+\setlength{\intraProjectListTopSep}{0.2em}
 
 % =======================================================================
 
-
-\titleformat{\section}         % 定制 \section 命令 
-{\large\bfseries\raggedright} % 将 section 标题设置为大号、粗体且左对齐
-{}{0em}                      % 可用于为所有 section 添加前缀（如“章节...”）
-{}                           % 可用于在标题前插入代码
-[{\color{CVBlue}\titlerule}]  % 在标题后插入一条横线
+\titleformat{\section}
+{\large\bfseries\raggedright}
+{}{0em}
+{}
+[{\color{CVBlue}\titlerule}]
 \titlespacing*{\section}{0cm}{*1.6}{*1.2}
-
-
 
 \begin{document}
 \pagenumbering{gobble}
 
-%%%% 利用tikz来定位照片
-\begin{tikzpicture}[remember picture, overlay] 
-    \node[anchor = north east] at ($(current page.north east)+(-2cm,-1.2cm)$) {\includegraphics[height=3cm]{avatar.jpg}};
+%%%% 利用tikz来定位照片（右上角）
+\begin{tikzpicture}[remember picture, overlay]
+    \node[anchor = north east] at ($(current page.north east)+(-1.2cm,-1.5cm)$) {\includegraphics[height=3cm]{avatar.jpg}};
   \end{tikzpicture}%
-  %%%% 利用tikz来定位学校Logo，这里只在第一页显示
-  \begin{tikzpicture}[remember picture, overlay] 
-    \node[anchor = north west] at ($(current page.north west)+(0.5cm,+1.0cm)$) {\includegraphics[height=6cm]{zju.png}};
+  %%%% 利用tikz来定位学校Logo，这里只在第一页显示（左上角）
+  \begin{tikzpicture}[remember picture, overlay]
+    \node[anchor = north west] at ($(current page.north west)+(0.3cm,+0.9cm)$) {\includegraphics[height=6cm]{zju.png}};
   \end{tikzpicture}%
-\centerline{\LARGE\bfseries{胡豆}} 
 
-\centerline{\normalsize{\faPhone\ 111-1111-1111 \quad \faEnvelopeO\ \href{mailto:3230100000@zju.edu.cn}{3230100000@zju.edu.cn}}} 
+\centerline{\LARGE\bfseries{张平安}}
+\centerline{\normalsize{\textsection\,Phone~177-8673-5893 \quad \textbullet\,Email~\href{mailto:2293450367@qq.com}{2293450367@qq.com}}}
+\centerline{\normalsize{\textbullet\, 浙江大学电子信息工程硕士 \quad \textbullet\, 浙江·杭州}}
 
-\centerline{\normalsize{\faGithubSquare\ \href{https://github.com/maksymilan}{https://github.com/maksymilan} \quad \faRssSquare\ \href{https://maksymilan.github.io/}{https://maksymilan.github.io}}} 
-    
-\section{\makebox[\widthof{\faGraduationCap}][c]{\color{CVBlue}\faGraduationCap}\ 教育背景}    
-\textbf{浙江大学} \hfill 2023.9 -- 至今\\[0.5em] % 标题和正文间加一点距离
-CC98烂坑挖掘工程与技术\quad 大二 
-\begin{itemize}[nosep]
-    \item 相关课程：《烂坑挖掘及基础》、《高级挖坑技巧》、《烂坑数理统计》
-\end{itemize}
+\section{\color{CVBlue}\ensuremath{\blacksquare}\ 教育背景}
 
-\section{\makebox[\widthof{\faUsers}][c]{\color{CVBlue}\faUsers}\ 项目经历}
-
-% --- 第一个项目 ---
-% 将标题行末尾的 \\ 替换为 \titlebreak 命令
-\textbf{98烂坑风控与可视化作战平台} \hfill 2024.08 -- 至今 \titlebreak
-项目描述：为维护cc98社区的讨论纯度、净化“心灵之约”版块风气，本项目旨在对“烂坑”进行科学、严谨的量化分析，并引入\textbf{大语言模型(LLM)}对烂坑帖进行\textbf{自动化情感极性与“离谱指数”标注}。
-% 在 itemize 的选项中，使用 topsep=\intraProjectListTopSep 来控制上边距
+\textbf{浙江大学} \hfill 2024.09 -- 2027.06 \titlebreak
+电子信息工程 \quad \textit{工学硕士}
 \begin{itemize}[nosep, topsep=\intraProjectListTopSep]
-    \item \textbf{数据与后端}：运用 \textbf{Go} 语言及 \textbf{GORM} 框架，实现对全站“烂坑”帖的7x24小时全天候\textbf{抓取}与\textbf{入库}(MySQL)。
-    \item \textbf{可视化前端}：采用原生 \textbf{HTML/CSS/JS} 构建了“烂坑”实时监控\textbf{作战大屏}。实现了坑主成分分析、挖坑热力图、年度烂坑王榜单等\textbf{可视化图表}，并通过 \textbf{AJAX} 异步刷新，确保数据洞察的实时性。
-    \item \textbf{核心产出}：全面掌握了从\textbf{数据采集、清洗、LLM标注到可视化分析}的“反烂坑”全链路技术。
+    \item \textbf{荣誉奖励}：浙江大学硕士一等学业奖学金（专业前 40\%）
 \end{itemize}
 
-% 使用 \projectsep 命令来分隔两个项目
 \projectsep
 
-% --- 第二个项目 ---
-\textbf{AIGC驱动的超进化自动挖坑机 (Agent)} \hfill 2025.02 -- 至今 \titlebreak
-项目描述：为探索心灵版规的边界，以及测试版主锁沉反应速度的极限，本项目基于\textbf{多智能体协作(MCP)与LLM}技术，开发了一款能\textbf{自主“挖坑”与“互坑”}的AI Agent。
+\textbf{武汉科技大学} \hfill 2020.09 -- 2024.06 \titlebreak
+电子信息工程 \quad \textit{工学学士}
 \begin{itemize}[nosep, topsep=\intraProjectListTopSep]
-    \item \textbf{并发与调度}：后端采用 \textbf{Go} 语言，充分利用 \textbf{Goroutine} 和 \textbf{Channel} 的高并发模型，模拟\textbf{用户并发在线}，执行定时挖坑，确保挖坑行动的\textbf{隐蔽性}与\textbf{高效性}。
-    \item \textbf{实时监控与响应}：运用 \textbf{WebSocket} 协议实现了对目标帖子的\textbf{实时监听与交互}。确保在烂坑被识破的第一时间，Agent能光速完成\textbf{“lktp”}或\textbf{反向钓鱼}操作，展现出极高的AI博弈能力。
-    \item \textbf{可视化GUI}：前端使用 \textbf{React} 框架构建了\textbf{后台管理的可视化面板 (Admin Panel)}。可一键下达挖坑指令、动态调整Agent的\textbf{指令}、并实时监控数据。
+    \item \textbf{学业成绩}：专业综合排名前 10\%，连续获得国家励志奖学金、校一等奖学金
 \end{itemize}
 
-\section{\makebox[\widthof{\faCogs}][c]{\color{CVBlue}\faCogs}\ 技术栈}
+\section{\color{CVBlue}\ensuremath{\blacksquare}\ 项目与实习经历}
+\textbf{循澜科技有限公司 | 基于ROS的AGV自主巡检与自动回充系统} \hfill 2026.03 -- 2026.06 \titlebreak
+\textit{算法开发}\titlebreak
+\begin{itemize}[nosep, topsep=\intraProjectListTopSep]
+    \item 基于激光雷达与 IMU 部署 Omni-LIVO 建图流程，经 ROS bag 录制回放生成点云地图并转换为二维栅格地图，接入 AMCL 定位链路。
+    \item 针对转弯后定位漂移与位姿跳变，调节 AMCL 粒子数与里程计噪声；调优 TEB 速度与障碍物代价，消除轨迹贴墙与频繁急停。
+    \item 经多轮实车测试成功对准充电桩并触发充电，偏航角误差控制在 2° 以内、横向误差控制在 2 cm 以内。
+    \item 接入红外热成像相机并配置静态 TF，以 80℃ 阈值加 3 帧确认实现 15 fps 火情监测；打通导航、底盘与 MQTT 链路。
+\end{itemize}
+
+\projectsep
+
+\textbf{浙江大学金华研究院 | 穿戴式生理声学时序分析与感知平台} \hfill 2024.11 -- 2026.01 \titlebreak
+\textit{算法与系统开发}\titlebreak
+\begin{itemize}[nosep, topsep=\intraProjectListTopSep]
+    \item 将 8 kHz/16 bit 生理声学信号切分为 1 s 样本，完成滤波与归一化，提取 24 维 MFCC 及差分，构建 3×24×512 特征图。
+    \item 按受试者维度以 6:2:2 划分训练/验证/测试集，以 PyTorch 构建 ResNet-LSTM 二分类模型，引入 Coordinate Attention 与 Focal Loss。
+    \item 采用加噪、时移及频率遮挡增强，测试集 F1 与 AUC 达 0.93--0.95。
+    \item 基于 nRF52840 与 Zephyr RTOS 开发 PDM 采集模块，以 DMA 双缓冲降低 CPU 开销。
+    \item 静态待机电流降至 15 μA、通信功耗降低 60%；完成 INT8 量化及 FPGA 推理部署验证。
+\end{itemize}
+
+\section{\color{CVBlue}\ensuremath{\blacksquare}\ 技术能力}
+编程语言：Python、PyTorch、C（熟练），C++（基础语法）；机器人导航：ROS Topic / 参数服务器 / TF / ROS bag，Omni-LIVO、AMCL、TEB、AprilTag、阿克曼底盘；信号处理：音频切分、滤波去噪、MFCC 与差分、小波维纳滤波、Focal Loss；嵌入式与部署：nRF52840、Zephyr RTOS、PDM、DMA、BLE、INT8 量化与 FPGA 部署；工具链：Git、Docker、Gazebo、MQTT。
+
+\section{\color{CVBlue}\ensuremath{\blacksquare}\ 荣誉奖励与语言能力}
 \begin{itemize}[nosep]
-    \item \textbf{编程语言：} \textbf{Go}, Python, C++
-    \item \textbf{开发工具：} SSH, Git, Vim, MakeFile,LaTex
-    \item \textbf{操作系统：} Linux
+    \item “大唐杯”5G 大赛省二等奖、蓝桥杯省三等奖、全国大学生英语竞赛（NECCS）全国三等奖；CET-6 580 分。
 \end{itemize}
-\section{\makebox[\widthof{\faGraduationCap}][c]{\color{CVBlue}\faList}\ 获奖情况}
-\begin{itemize}
-    \item CC98年度用户 \hfill 2023.12
-    
-\end{itemize}
-    
-\section{\makebox[\widthof{\faInfo}][c]{\color{CVBlue}\faInfo}\ 其他}
-\begin{itemize}[parsep=0.5ex]
-    \item \textbf{技术博客：} \href{https://maksymilan.github.io/}{https://maksymilan.github.io/}
-    \item \textbf{GitHub：} \href{https://github.com/maksymilan}{https://github.com/maksymilan} 
-    \item \textbf{英语水平：} CET-4, CET-6
-\end{itemize}
+
 \end{document}
